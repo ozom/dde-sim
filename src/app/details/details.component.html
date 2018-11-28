@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <div class="page-header clear-filter" filter-color="orange">
+
+  </div>
+
+<div class="col-md-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title"> DETAILS DU CLIENT</h4>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead class=" text-primary">
+                      <th *ngFor="let col of column">
+                          {{col}}
+                      </th>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of detail">
+                          <td *ngFor="let col of column">
+                              {{item[col]}}
+                          </td>
+          
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+</div>

@@ -1,0 +1,143 @@
+<div class="wrapper">
+  <div class="page-header clear-filter" filter-color="orange">
+
+  </div>
+
+  <div id="inputs" style="padding : 30px">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0 auto; padding-top: 50px ">
+            <div class="form-group">
+                <input type="text" value="" placeholder="ENTRER LE CODE CLIENT OU NUMERO CLIENT" [(ngModel)]="cle" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-2" style="margin: 0 auto;padding-top: 44px  ">
+                <button [disabled]="cle.length == 0" class="btn btn-primary btn-round" (click)="getData(cle); getInfo(cle);new_offer(cle)">Rechercher un client</button>
+        </div>
+        <div class="col-md-6" style="margin: 0 auto; ">
+          <div class="card">
+            <div class="nav-tabs-navigation" >
+                <div class="nav-tabs-wrapper">
+                    <ngb-tabset [justify]="'center'"  >
+                        <ngb-tab title="Information client">
+                          <ng-template ngbTabContent>
+                              <div class="row " style="padding : 2px">
+                                  <div class="col-md-5">CODE DU CLIENT     : {{info.code_client}} </div>
+                                  <div class="col-md-6">SEGMENT DU CLIENT  : {{info.segment}}</div>
+                              </div>
+                              <div class="row" style="padding : 2px">
+                                  <div class="col-md-12">NOM DU CLIENT     :  {{info.nom_client}}</div>
+                              </div>
+                              
+                          </ng-template>
+                        </ngb-tab>
+                        
+                    </ngb-tabset>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+
+</div>
+
+<div class="col-md-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title"> OFFRE ACTUELLE</h4>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead class=" text-primary">
+                      <th>
+                          Offre actuelle
+                      </th>
+                      <th>
+                          Parc de ligne
+                      </th>
+                      
+                      <th class="text-right">
+                          CA HT
+                      </th>
+                  </thead>
+                  <tbody>
+                      <tr class='clickable-row' *ngFor="let item of actuel_data" (click)="viewdetail(item);">
+                          <td>
+                              {{item.offre }}
+                          </td>
+                          <td>
+                            {{item.parc | number}}
+                          </td>
+                          
+                          <td class="text-right">
+                            {{item.ca_ht | number}} FCFA
+                          </td>
+                      </tr>
+                
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container">
+
+<div class="navbar-translate">
+    <a class="navbar-brand" href="#pablo">MIGRATION VERS LES NOUVELLES OFFRES TERANGA</a>
+</div>
+</div>
+</nav>
+
+<div class="col-md-12" *ngFor="let item of new_offre ; let i='index'" >
+    <div class="card" *ngIf="i<n">
+        <div class="card-header">
+            <h4 class="card-title" >PROPOSITION N° {{i+1}} : <small> {{item.info}}</small></h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                        <th>
+                            Offre BMP
+                        </th>
+                        <th>
+                            Parc de ligne
+                        </th>
+                        <th>
+                            CA HT
+                        </th>
+                        
+                        <th class="text-right">
+                            IMPACT
+                        </th>
+                    </thead>
+                    <tbody>
+
+                        <tr  *ngFor="let it of item.donnee;" >
+                            <td>
+                                {{it.offre}}
+                            </td>
+                            <td>
+                                {{it.parc | number}} 
+                            </td>
+                            <td>
+                                {{it.ca_ht | number}} FCFA 
+                            </td>
+                            
+                            <td class="text-right">
+                                {{it.impact | number}} FCFA
+                            </td>
+                        </tr>
+                  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-round" (click)="n = n+1">Plus de propositions</button>
+
+</div>
