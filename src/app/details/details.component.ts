@@ -20,7 +20,7 @@ export class details implements OnInit {
 
   ngOnInit() {
       
-    this.http.post("http://localhost:5000/details", this.data_received).subscribe(
+    this.http.post("https://api-dde.herokuapp.com/details", this.data_received).subscribe(
         data => {
             this.detail = data
             this.column = Object.keys(this.detail[0])
