@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private http : HttpClient, private router: Router) { }
 
     login(username, password){
-        this.http.post("http://localhost:5000/login", {
+        this.http.post("https://api-dde.herokuapp.com/login", {
 
         "username" : username,
         "password" : password
