@@ -19,6 +19,18 @@ export class DdeComponent implements OnInit {
   public new_offre = [];
   public n = 1;
 
+  check_state(){
+        const state = this.storage.get("state")
+        if (state["from"] == "details") {
+            this.getData(state["cle"])
+            this.new_offer(state["cle"])
+            this.getInfo((state["cle"]))
+            this.cle = state["cle"]
+            this.storage.remove("state")
+        } 
+
+  }
+
   viewdetail(rowdata){
     this.storage.set("row", {"code_client":this.info['code_client'], "offre":rowdata["offre"]});
     this.router.navigate(['/details']);
@@ -83,7 +95,8 @@ export class DdeComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-  }
+    this.check_state()
+
+    }
 
 }

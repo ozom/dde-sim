@@ -19,6 +19,8 @@ export class details implements OnInit {
     public column = []
 
   ngOnInit() {
+
+    this.storage.set('state', {"from":"details", "cle":this.data_received['code_client']})
       
     this.http.post("https://api-dde.herokuapp.com/details", this.data_received).subscribe(
         data => {

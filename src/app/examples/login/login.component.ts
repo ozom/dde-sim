@@ -26,9 +26,11 @@ export class LoginComponent implements OnInit {
                 this.logged = data['logged']
                 if (data['logged'] == true ){
                     this.storage.set('logged', true)
+                    this.storage.set('state', {"from":"login", "cle":""})
                     this.router.navigate(['/simulateur']);
                 } else{
                     this.storage.set('logged', false)
+                    this.storage.set('state', {"from":"login", "cle":""})
                 }      
             },
             error => {

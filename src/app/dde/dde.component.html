@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-4" style="margin: 0 auto; padding-top: 50px ">
             <div class="form-group">
-                <input type="text" value="" placeholder="ENTRER LE CODE CLIENT OU NUMERO CLIENT" [(ngModel)]="cle" class="form-control" />
+                <input type="text" (keyup.enter)="getData(cle); getInfo(cle);new_offer(cle)" value="" placeholder="ENTRER LE CODE CLIENT OU NUMERO CLIENT" [(ngModel)]="cle" class="form-control" />
             </div>
         </div>
         <div class="col-md-2" style="margin: 0 auto;padding-top: 44px  ">
