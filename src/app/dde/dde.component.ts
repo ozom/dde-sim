@@ -19,8 +19,16 @@ export class DdeComponent implements OnInit {
   public new_offre = [];
   public n = 1;
 
+  setMyStyles(it) {
+    let styles = {
+      'font-weight': it == 'TOTAL' ? 'bold' : 'normal'
+    };
+    return styles;
+  }
+
   check_state(){
         const state = this.storage.get("state")
+        if (state != null) {
         if (state["from"] == "details") {
             this.getData(state["cle"])
             this.new_offer(state["cle"])
@@ -28,6 +36,7 @@ export class DdeComponent implements OnInit {
             this.cle = state["cle"]
             this.storage.remove("state")
         } 
+    }
 
   }
 

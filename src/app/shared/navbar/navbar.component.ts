@@ -4,6 +4,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router} from "@angular/router";
 
 
+
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -16,6 +17,12 @@ export class NavbarComponent implements OnInit {
 
     constructor(public location: Location, private element : ElementRef,@Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
         this.sidebarVisible = false;
+    }
+
+    refresh(){
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+          };
     }
 
     ngOnInit() {

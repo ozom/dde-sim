@@ -21,11 +21,11 @@
                         <ngb-tab title="Information client">
                           <ng-template ngbTabContent>
                               <div class="row " style="padding : 2px">
-                                  <div class="col-md-5">CODE DU CLIENT     : {{info.code_client}} </div>
-                                  <div class="col-md-6">SEGMENT DU CLIENT  : {{info.segment}}</div>
+                                  <div class="col-md-5">CODE DU CLIENT     :  <span class="text-primary">  {{info.code_client}} </span></div>
+                                  <div class="col-md-6">SEGMENT DU CLIENT  :  <span class="text-primary">  {{info.segment}} </span> </div>
                               </div>
                               <div class="row" style="padding : 2px">
-                                  <div class="col-md-12">NOM DU CLIENT     :  {{info.nom_client}}</div>
+                                  <div class="col-md-12">NOM DU CLIENT     :  <span class="text-primary">  {{info.nom_client}} </span></div>
                               </div>
                               
                           </ng-template>
@@ -56,18 +56,24 @@
                       <th>
                           Parc de ligne
                       </th>
+                      <th>
+                      
+                    </th>
                       
                       <th class="text-right">
                           CA HT
                       </th>
                   </thead>
                   <tbody>
-                      <tr class='clickable-row' *ngFor="let item of actuel_data" (click)="viewdetail(item);">
+                      <tr class='clickable-row' [ngClass]="{' text-primary' : item.offre == 'TOTAL'} " [ngStyle]="setMyStyles(item.offre)" *ngFor="let item of actuel_data" (click)="viewdetail(item);">
                           <td>
                               {{item.offre }}
                           </td>
                           <td>
                             {{item.parc | number:'.0-0'}}
+                          </td>
+                          <td>
+                             <span class="fa fa-plus-circle"></span> Base detaillée
                           </td>
                           
                           <td class="text-right">
@@ -116,7 +122,7 @@
                     </thead>
                     <tbody>
 
-                        <tr  *ngFor="let it of item.donnee;" >
+                        <tr  *ngFor="let it of item.donnee;" [ngClass]="{' text-primary' : it.offre == 'TOTAL'} " [ngStyle]="setMyStyles(it.offre)">
                             <td>
                                 {{it.offre}}
                             </td>
