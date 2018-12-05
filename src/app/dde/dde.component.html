@@ -67,11 +67,11 @@
                               {{item.offre }}
                           </td>
                           <td>
-                            {{item.parc | number}}
+                            {{item.parc | number:'.0-0'}}
                           </td>
                           
                           <td class="text-right">
-                            {{item.ca_ht | number}} FCFA
+                            {{item.ca_ht | number:'.0-0'}} FCFA
                           </td>
                       </tr>
                 
@@ -121,14 +121,14 @@
                                 {{it.offre}}
                             </td>
                             <td>
-                                {{it.parc | number}} 
+                                {{it.parc | number:'.0-0'}} 
                             </td>
                             <td>
-                                {{it.ca_ht | number}} FCFA 
+                                {{it.ca_ht | number:'.0-0'}} FCFA 
                             </td>
                             
                             <td class="text-right">
-                                {{it.impact | number}} FCFA
+                                {{it.impact | number:'.0-0'}} FCFA
                             </td>
                         </tr>
                   

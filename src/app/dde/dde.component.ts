@@ -51,14 +51,16 @@ export class DdeComponent implements OnInit {
         this.new_offre.push({"info" : "engagement 24 mois et avec terminal", "donnee" : data})
         this.http.get("https://api-dde.herokuapp.com/new_offer3/"+key).subscribe(data => {
             this.new_offre.push({"info" : "engagement 24 mois et sans terminal", "donnee" : data})
-        })
-        //console.log("actuel data : ", this.actuel_data)
+                    //console.log("actuel data : ", this.actuel_data)
         this.http.get("https://api-dde.herokuapp.com/new_offer2/"+key).subscribe(data => {
             this.new_offre.push({"info" : "engagement 12 mois et avec terminal", "donnee" : data})
+            this.http.get("https://api-dde.herokuapp.com/new_offer4/"+key).subscribe(data => {
+                this.new_offre.push({"info" : "engagement 12 mois et sans terminal", "donnee" : data})
+            })
         })
-        this.http.get("https://api-dde.herokuapp.com/new_offer4/"+key).subscribe(data => {
-            this.new_offre.push({"info" : "engagement 12 mois et sans terminal", "donnee" : data})
         })
+
+
     },
     error => {
         console.log("Error", error);
