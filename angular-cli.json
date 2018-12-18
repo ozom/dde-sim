@@ -21,6 +21,7 @@
             "styles": [
               "styles.scss",
               "assets/sass/now-ui-kit.scss",
+              "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
               "assets/css/demo.css"
             ],
             "scripts": [

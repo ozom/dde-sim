@@ -1,8 +1,10 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, ViewContainerRef,OnInit , Inject} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { Injectable } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import {ToastOptions} from 'ng2-toastr';
 
 @Component({
   selector: 'app-dde',
@@ -11,13 +13,17 @@ import { Injectable } from '@angular/core';
 })
 export class DdeComponent implements OnInit {
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private http : HttpClient, private router: Router) { }
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private http : HttpClient,public toastr: ToastsManager, private router: Router,vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+   }
 
   public actuel_data : Object;
   public info : Object = {code_client: "", nom_client: "", segment: ""};
   public cle = "";
   public new_offre = [];
+  public show = false
   public n = 1;
+  public error_message = "";
 
   setMyStyles(it) {
     let styles = {
@@ -91,10 +97,16 @@ export class DdeComponent implements OnInit {
 }
 
   getInfo(key){
+     this.error_message = "";
     this.http.get("https://api-dde.herokuapp.com/info/"+key) .subscribe(
       data => {
           console.log("Request is successful ", data);
           this.info = data
+          console.log(Object.keys(this.info).length)
+          if (Object.keys(this.info).length == 0) {
+              this.error_message = "Le numéro client ou le code client fourni n'existe pas dans la base";
+              this.toastr.warning('', "Code non conforme. Merci de vous rapprocher du marketing pour plus d’infos ", {positionClass: 'toast-top-center'});
+          }
 
       },
       error => {

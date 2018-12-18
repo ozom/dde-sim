@@ -17,6 +17,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {AuthGuardService} from './auth/auth-gard.service';
 import {AuthService} from './auth/auth.service';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -28,6 +29,7 @@ registerLocaleData(localeFr, 'fr');
     ],
     imports: [
         BrowserAnimationsModule,
+        ToastModule.forRoot(),
         NgbModule.forRoot(),
         HttpClientModule,
         FormsModule,

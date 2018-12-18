@@ -5,10 +5,12 @@
 
   <div id="inputs" style="padding : 30px">
     <div class="row">
+            <div *ngIf="this.show "> {{ error_message }} </div>
         <div class="col-md-4" style="margin: 0 auto; padding-top: 50px ">
             <div class="form-group">
                 <input type="text" (keyup.enter)="getData(cle); getInfo(cle);new_offer(cle)" value="" placeholder="ENTRER LE CODE CLIENT OU NUMERO CLIENT" [(ngModel)]="cle" class="form-control" />
             </div>
+           
         </div>
         <div class="col-md-2" style="margin: 0 auto;padding-top: 44px  ">
                 <button [disabled]="cle.length == 0" class="btn btn-primary btn-round" (click)="getData(cle); getInfo(cle);new_offer(cle)">Rechercher un client</button>
@@ -18,7 +20,7 @@
             <div class="nav-tabs-navigation" >
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'"  >
-                        <ngb-tab title="Information client">
+                        <ngb-tab title="Informations client">
                           <ng-template ngbTabContent>
                               <div class="row " style="padding : 2px">
                                   <div class="col-md-5">CODE DU CLIENT     :  <span class="text-primary">  {{info.code_client}} </span></div>
@@ -40,7 +42,7 @@
     </div>
 
 </div>
-
+<a id="begining"></a> 
 <div class="col-md-12">
   <div class="card">
       <div class="card-header">
@@ -92,6 +94,7 @@
     <div class="container">
 
 <div class="navbar-translate">
+
     <a class="navbar-brand" href="#pablo">MIGRATION VERS LES NOUVELLES OFFRES TERANGA</a>
 </div>
 </div>
@@ -145,5 +148,5 @@
     </div>
   </div>
   <button class="btn btn-primary btn-round" (click)="n = n+1"> <span class="fa fa-plus-circle fa-lg" style="color : black">   Plus de propositions</span> </button>
-
+  Click <a href="/simulateur#begining">here</a> to go up
 </div>

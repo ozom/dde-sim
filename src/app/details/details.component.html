@@ -3,16 +3,17 @@
 
   </div>
 
-<div class="col-md-12">
+<div class="col-md-12" style="width: 100%;overflow-x: auto;white-space: nowrap;">
   <div class="card">
       <div class="card-header">
           <h4 class="card-title"> DETAILS DU CLIENT</h4>
       </div>
-      <div class="card-body">
+      <div class="card-body" >
           <div class="table-responsive">
               <table class="table">
+              
                   <thead class=" text-primary">
-                      <th *ngFor="let col of column">
+                      <th  *ngFor="let col of column">
                           {{col}}
                       </th>
                   </thead>
